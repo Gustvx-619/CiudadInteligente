@@ -21,10 +21,10 @@
   <div class="hub" id="modulos">
 
     <svg class="rayos" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-      <line x1="50" y1="50" x2="50" y2="14"/>
+      <line x1="50" y1="50" x2="50" y2="11"/>
       <line x1="50" y1="50" x2="88" y2="36"/>
-      <line x1="50" y1="50" x2="77" y2="81"/>
-      <line x1="50" y1="50" x2="23" y2="81"/>
+      <line x1="50" y1="50" x2="80" y2="80"/>
+      <line x1="50" y1="50" x2="20" y2="80"/>
       <line x1="50" y1="50" x2="12" y2="36"/>
     </svg>
 
@@ -32,15 +32,13 @@
       <p class="etiqueta">Universidad de Cundinamarca, Big Data 701N</p>
       <h1 id="titulo">Ciudad Inteligente</h1>
       <p class="resumen">Una maqueta de ciudad de 100 × 60 cm. Cada grupo armó un módulo con sensores, guarda sus datos y los analiza en un dashboard de Power BI.</p>
-      <p class="indicacion">Elige un módulo para ver su dashboard.</p>
     </section>
 
     <ul class="nodos">
-      <li class="nodo" style="--x:50%;--y:14%;--i:0">
+      <li class="nodo" style="--x:50%;--y:11%;--i:0">
         <a href="#parking" class="tarjeta" style="--c:var(--parking)">
           <span class="num">01</span>
           <span class="nombre">Smart Parking</span>
-          <span class="que">Parqueadero con talanquera y cuatro espacios con sensor.</span>
           <span class="accion">Ver dashboard</span>
         </a>
       </li>
@@ -48,23 +46,20 @@
         <a href="#green" class="tarjeta" style="--c:var(--verde)">
           <span class="num">02</span>
           <span class="nombre">SmartGreenZone</span>
-          <span class="que">Agricultura inteligente: clima y humedad del suelo.</span>
           <span class="accion">Ver dashboard</span>
         </a>
       </li>
-      <li class="nodo" style="--x:77%;--y:81%;--i:2">
+      <li class="nodo" style="--x:80%;--y:80%;--i:2">
         <div class="tarjeta pendiente" aria-disabled="true">
           <span class="num">03</span>
           <span class="nombre">Grupo 3</span>
-          <span class="que">Módulo por definir.</span>
           <span class="accion">Pendiente</span>
         </div>
       </li>
-      <li class="nodo" style="--x:23%;--y:81%;--i:3">
+      <li class="nodo" style="--x:20%;--y:80%;--i:3">
         <div class="tarjeta pendiente" aria-disabled="true">
           <span class="num">04</span>
           <span class="nombre">Grupo 4</span>
-          <span class="que">Módulo por definir.</span>
           <span class="accion">Pendiente</span>
         </div>
       </li>
@@ -72,7 +67,6 @@
         <div class="tarjeta pendiente" aria-disabled="true">
           <span class="num">05</span>
           <span class="nombre">Grupo 5</span>
-          <span class="que">Módulo por definir.</span>
           <span class="accion">Pendiente</span>
         </div>
       </li>
@@ -91,7 +85,28 @@
     <h2 id="visor-titulo">Dashboard</h2>
     <a class="externo" id="visor-externo" href="#" target="_blank" rel="noopener">Abrir en otra pestaña</a>
   </header>
+  <div class="pestanas" id="pestanas" hidden>
+    <a href="#parking" id="tab-historico">Histórico</a>
+    <a href="#parking-vivo" id="tab-vivo">En vivo</a>
+  </div>
   <iframe id="visor-marco" title="Dashboard de Power BI" allowfullscreen></iframe>
+  <div class="vivo" id="vivo" hidden>
+    <div class="vivo-texto">
+      <h3>La página En vivo de Smart Parking</h3>
+      <p>En la versión de escritorio del dashboard hay una página que muestra el plano de la maqueta, cuántos espacios están libres y los últimos movimientos de la talanquera. Se actualiza sola cada 5 segundos.</p>
+      <p>Esa página lee la base de datos del computador del grupo, por eso no se puede publicar en Power BI web. Aquí se ve una captura de cómo luce y, al lado, el estado de la maqueta leído directamente de sus mensajes.</p>
+    </div>
+    <div class="vivo-cuerpo">
+      <img src="img/parking-en-vivo.png" width="975" height="548" alt="Página En vivo del dashboard de escritorio: plano con cuatro espacios, libres ahora y movimientos de la talanquera">
+      <div class="vivo-panel">
+        <p id="ev-estado">Conectando con la maqueta...</p>
+        <p class="ev-grande" id="ev-resumen">Esperando datos</p>
+        <div id="ev-espacios" class="ev-grid"></div>
+        <p class="ev-edad" id="ev-edad"></p>
+        <ul id="ev-log" class="ev-log"></ul>
+      </div>
+    </div>
+  </div>
 </dialog>
 
 <script src="app.js"></script>
