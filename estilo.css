@@ -6,6 +6,7 @@
   --carta: #fbf9f4;
   --parking: #c2410c;
   --verde: #2b7a3d;
+  --residuos: #1d6fa5;
   --f-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
   --f-texto: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
 }
@@ -91,11 +92,6 @@ h1 {
   margin: 0;
   font: 700 clamp(36px, min(5.4vw, 9.5svh), 68px)/1 var(--f-titulo);
   letter-spacing: -.02em;
-}
-.resumen {
-  margin: 20px 0 0;
-  font-size: 17px;
-  color: var(--tinta);
 }
 
 .nodos { list-style: none; margin: 0; padding: 0; }

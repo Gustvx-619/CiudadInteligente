@@ -3,8 +3,8 @@
 Página de entrada de la maqueta de ciudad inteligente (100 x 60 cm) de Big Data 701N, Universidad de Cundinamarca.
 Al centro está el nombre de la maqueta y alrededor hay cinco botones, uno por grupo. Cada botón abre el dashboard de Power BI de ese grupo.
 
-- Módulos con dashboard: Smart Parking y SmartGreenZone.
-- Grupos 3, 4 y 5: pendientes.
+- Módulos con dashboard: Smart Parking, SmartGreenZone y Smart Waste & Recycling.
+- Grupos 4 y 5: pendientes.
 - Escenario y datos simulados.
 
 ## Cómo agregar un grupo

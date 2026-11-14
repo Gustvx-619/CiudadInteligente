@@ -6,6 +6,10 @@ var MODULOS = {
     vivo: true,
     url: "https://app.powerbi.com/view?r=eyJrIjoiYTgwZTY5OTUtOWMyNi00OWNhLThiNTYtMzYyZjU4N2E5YTk0IiwidCI6IjA3ZGE2N2EwLTFmNDMtNGU4Yy05NzdmLTVmODhiNjQ3MGVlNiIsImMiOjR9"
   },
+  residuos: {
+    nombre: "Smart Waste & Recycling",
+    url: "https://app.powerbi.com/view?r=eyJrIjoiZDJkZGE4YzYtN2IxNi00ZmIyLTllZWMtNzg3MjljYTFmYTkxIiwidCI6IjA3ZGE2N2EwLTFmNDMtNGU4Yy05NzdmLTVmODhiNjQ3MGVlNiIsImMiOjR9"
+  },
   green: {
     nombre: "SmartGreenZone",
     url: "https://app.powerbi.com/view?r=eyJrIjoiOTI4ZGUwMjYtYjU4Mi00Y2MwLWI4OTUtMTkxMWQxMDIxMjhjIiwidCI6IjA3ZGE2N2EwLTFmNDMtNGU4Yy05NzdmLTVmODhiNjQ3MGVlNiIsImMiOjR9"
