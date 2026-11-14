@@ -1,0 +1,264 @@
+:root {
+  --papel: #f3f0e8;
+  --tinta: #16202a;
+  --suave: #56626d;
+  --linea: #cfc8b9;
+  --carta: #fbf9f4;
+  --parking: #c2410c;
+  --verde: #2b7a3d;
+  --f-titulo: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --f-texto: "Instrument Sans", "Segoe UI", system-ui, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html { color-scheme: light; }
+
+body {
+  margin: 0;
+  min-height: 100svh;
+  background-color: var(--papel);
+  /* cuadrícula muy tenue, como el plano de una ciudad */
+  background-image:
+    linear-gradient(rgba(22, 32, 42, .05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(22, 32, 42, .05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  color: var(--tinta);
+  font: 400 17px/1.5 var(--f-texto);
+  display: flex;
+  flex-direction: column;
+}
+
+a { color: inherit; }
+
+.salto {
+  position: absolute;
+  left: 16px;
+  top: -60px;
+  background: var(--tinta);
+  color: var(--papel);
+  padding: 10px 14px;
+  z-index: 10;
+}
+.salto:focus { top: 12px; }
+
+:focus-visible { outline: 3px solid var(--tinta); outline-offset: 3px; }
+
+main { flex: 1; display: flex; align-items: center; }
+
+/* ---------- el centro y los cinco botones ---------- */
+.hub {
+  position: relative;
+  width: min(100% - 48px, 1180px);
+  height: min(calc(100svh - 92px), 720px);
+  min-height: 560px;
+  margin: 0 auto;
+}
+
+.rayos {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+.rayos line {
+  stroke: var(--linea);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  vector-effect: non-scaling-stroke;
+}
+
+.centro {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: min(400px, 36%);
+  text-align: center;
+  background: var(--papel);
+  padding: 8px 6px;
+  animation: entra .7s ease both;
+}
+.etiqueta {
+  margin: 0 0 14px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--suave);
+}
+h1 {
+  margin: 0;
+  font: 700 clamp(40px, 5.4vw, 68px)/1 var(--f-titulo);
+  letter-spacing: -.02em;
+}
+.resumen {
+  margin: 20px 0 0;
+  font-size: 17px;
+  color: var(--tinta);
+}
+.indicacion {
+  margin: 16px 0 0;
+  font-size: 15px;
+  color: var(--suave);
+}
+
+.nodos { list-style: none; margin: 0; padding: 0; }
+.nodo {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  width: min(256px, 22%);
+}
+
+.tarjeta {
+  display: grid;
+  gap: 4px;
+  padding: 16px 18px 14px;
+  background: var(--carta);
+  border: 1.5px solid var(--tinta);
+  border-top: 5px solid var(--c, var(--linea));
+  text-decoration: none;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  animation: entra .6s ease both;
+  animation-delay: calc(.15s + var(--i) * .08s);
+}
+a.tarjeta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--tinta); }
+a.tarjeta:active { transform: translateY(0); box-shadow: 0 2px 0 var(--tinta); }
+
+.num {
+  font: 600 13px/1 var(--f-texto);
+  color: var(--suave);
+  letter-spacing: .08em;
+}
+.nombre { font: 700 21px/1.15 var(--f-titulo); }
+.que { font-size: 15px; line-height: 1.4; color: var(--suave); }
+.accion {
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  min-height: 24px;
+  background-image: linear-gradient(var(--tinta), var(--tinta));
+  background-repeat: no-repeat;
+  background-size: 0 2px;
+  background-position: 0 100%;
+  width: max-content;
+  transition: background-size .25s ease;
+}
+a.tarjeta:hover .accion { background-size: 100% 2px; }
+a.tarjeta .accion::after { content: "  →"; }
+
+.pendiente {
+  border: 1.5px dashed var(--linea);
+  border-top: 5px solid var(--linea);
+  background: var(--papel);
+  color: var(--suave);
+}
+.pendiente .nombre { color: var(--suave); }
+
+@keyframes entra {
+  from { opacity: 0; transform: translateY(8px); }
+}
+.centro { animation-name: entra-centro; }
+@keyframes entra-centro {
+  from { opacity: 0; transform: translate(-50%, calc(-50% + 8px)); }
+}
+
+/* ---------- pie ---------- */
+.pie {
+  width: min(100% - 48px, 1180px);
+  margin: 0 auto;
+  padding: 14px 0 20px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--suave);
+}
+.pie p { margin: 0; }
+.pie a { text-underline-offset: 3px; }
+
+/* ---------- visor del dashboard ---------- */
+dialog {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100vw;
+  max-width: 100vw;
+  height: 100svh;
+  max-height: 100svh;
+  background: var(--tinta);
+  color: var(--papel);
+}
+dialog::backdrop { background: rgba(22, 32, 42, .9); }
+dialog[open] { display: flex; flex-direction: column; }
+.visor-barra {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  height: 56px;
+  flex: none;
+}
+.visor-barra h2 {
+  margin: 0;
+  flex: 1;
+  text-align: center;
+  font: 700 18px/1 var(--f-titulo);
+}
+.volver, .externo {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--papel);
+  border: 1.5px solid rgba(243, 240, 232, .5);
+  text-decoration: none;
+  transition: background-color .15s ease, transform .15s ease;
+}
+.volver::before { content: "←  "; white-space: pre; }
+.externo::after { content: "  ↗"; white-space: pre; }
+.volver:hover, .externo:hover { background: rgba(243, 240, 232, .14); transform: translateY(-1px); }
+.volver:active, .externo:active { transform: translateY(0); }
+.visor-barra :focus-visible { outline-color: var(--papel); }
+#visor-marco { flex: 1; width: 100%; border: 0; background: #fff; }
+
+/* ---------- tablet y celular: lista vertical ---------- */
+@media (max-width: 900px) {
+  main { display: block; }
+  .hub {
+    height: auto;
+    min-height: 0;
+    padding: 36px 0 12px;
+  }
+  .rayos { display: none; }
+  .centro {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 560px;
+    margin: 0 auto 32px;
+    background: none;
+    animation-name: entra;
+  }
+  .nodos { display: grid; gap: 14px; max-width: 560px; margin: 0 auto; }
+  .nodo { position: static; transform: none; width: auto; }
+  .tarjeta { animation-name: entra; }
+  .visor-barra { padding: 0 10px; gap: 8px; }
+  .visor-barra h2 { font-size: 15px; }
+  .volver, .externo { padding: 0 10px; font-size: 14px; }
+}
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .externo { display: none; }
+  .visor-barra h2 { text-align: right; }
+  .pie { flex-direction: column; gap: 6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
